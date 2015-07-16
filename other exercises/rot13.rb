@@ -34,6 +34,3 @@ class RotThirteen
     end
   end
 end
-
-apartment_therapy_media = RotThirteen.new("Fraq hf gur pbqr lbh hfrq gb qrpbqr guvf zrffntr")
-apartment_therapy_media.decode
