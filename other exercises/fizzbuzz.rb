@@ -1,5 +1,5 @@
 class FizzBuzz
-  num = 1...100
+  num = 1..100
 
   num.each do |i|
     if i % 3 === 0
