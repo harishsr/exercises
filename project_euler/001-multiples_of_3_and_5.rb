@@ -7,12 +7,12 @@ class Multiples
     @multiples = []
   end
 
-  def calculate_sum
-    calculate_multiples_of_three_and_five
+  def sum_of_multiples_of_three_and_five
+    multiples_of_three_and_five
     multiples.inject(:+)
   end
 
-  def calculate_multiples_of_three_and_five
+  def multiples_of_three_and_five
     (1...max).each do |num|
       multiples.push(num) && next if is_a_multiple_of?(num, 3)
       multiples.push(num) if is_a_multiple_of? num, 5
