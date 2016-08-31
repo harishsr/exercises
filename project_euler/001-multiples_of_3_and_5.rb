@@ -1,5 +1,6 @@
 class Multiples
-  attr_accessor :max, :multiples
+  attr_accessor :max
+  attr_reader :multiples
 
   def initialize( max )
     @max = max
@@ -7,20 +8,18 @@ class Multiples
   end
 
   def calculate_sum
+    calculate_multiples_of_three_and_five
+    multiples.inject(:+)
+  end
+
+  def calculate_multiples_of_three_and_five
     (1...max).each do |num|
-      of_three(num)
-      of_five(num)
+      multiples.push(num) && next if is_a_multiple_of?(num, 3)
+      multiples.push(num) if is_a_multiple_of? num, 5
     end
-    multiples.uniq.inject(:+)
   end
 
-  private
-
-  def of_three(num)
-    multiples.push(num) if ( num % 3 == 0 )
-  end
-
-  def of_five(num)
-    multiples.push(num) if ( num % 5 == 0 )
+  def is_a_multiple_of?( num, value )
+    num % value == 0
   end
 end
