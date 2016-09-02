@@ -13,20 +13,45 @@ class FibonacciSequence
     @sequence = []
   end
 
+  # The first thing I did was to list all the objectives I'll need to reach to
+  # get the answer I want.
+  # 1. calculate the Fibonacci Sequence and save it in an array
+  # 2. isolate the even numbers from the sequence
+  # 3. add the even numbers up
+
+  # The first way I calculated the sequence.  It works BUT I don't like using
+  # plain loops in Ruby unless I absolutely have to.  Thus I worked on
+  # another way and found it, in the second iteration of this method.
+  # def calculate_sequence
+  #   loop do
+  #     num1 = sequence[-1] || 0
+  #     num2 = sequence[-2] || 1
+  #     new_num = num1 + num2
+  #     return sequence if new_num > max
+  #     sequence << new_num
+  #   end
+  # end
+
+  # Step 1:
   def calculate_sequence
-    loop do
+    new_num = 0
+    until new_num > max do
+      # The following defaults are chosen because I expect the first
+      # calculation to be 0 + 1.  After that, we will always use the last and
+      # second-to-last number.
       num1 = sequence[-1] || 0
       num2 = sequence[-2] || 1
       new_num = num1 + num2
-      return if new_num > max
       sequence << new_num
     end
   end
 
+  # Step 2: 
   def even_numbers_in_sequence
     sequence.select{|x| x.even? }
   end
 
+  # Step 3: 
   def sum_of_even_values
     even_numbers_in_sequence.inject(:+)
   end
