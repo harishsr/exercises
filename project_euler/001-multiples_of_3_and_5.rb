@@ -26,3 +26,6 @@ class Multiples
     num % value == 0
   end
 end
+
+mul = Multiples.new( 1000 )
+puts mul.sum_of_multiples_of_three_and_five
