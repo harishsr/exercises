@@ -19,7 +19,7 @@ class FibonacciSequence
   # 2. isolate the even numbers from the sequence
   # 3. add the even numbers up
 
-  # The first way I calculated the sequence.  It works BUT I don't like using
+  # The initial sequence calculation.  It works BUT I don't like using
   # plain loops in Ruby unless I absolutely have to.  Thus I worked on
   # another way and found it, in the second iteration of this method.
   # def calculate_sequence
@@ -48,15 +48,16 @@ class FibonacciSequence
 
   # Step 2: 
   def even_numbers_in_sequence
+    # This method should require that a sequence exists.
+    calculate_sequence if sequence.empty?
     sequence.select{|x| x.even? }
   end
 
   # Step 3: 
   def sum_of_even_values
-    even_numbers_in_sequence.inject(:+)
+    even_numbers_in_sequence.reduce(:+)
   end
 end
 
 seq = FibonacciSequence.new( 4_000_000 )
-seq.calculate_sequence
 puts seq.sum_of_even_values
