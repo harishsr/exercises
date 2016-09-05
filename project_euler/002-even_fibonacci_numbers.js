@@ -7,4 +7,23 @@ function Fibonacci( maxValue ) {
   this.sequence = [1, 2, 3, 4, 5, 6, 7, 8];
 
   this.calculateSequence = function(){}
+  this.evenNumbersInSequence = evenNumbers(this.sequence);
 }
+
+
+function evenNumbers(arrayIn){
+  var evenNums = [];
+  if (arrayIn.length < 1){
+    return;
+  } else {
+    for (i=0; i < arrayIn.length; i++){
+      if (arrayIn[i] % 2 === 0){
+        evenNums.push(arrayIn[i]);
+      }
+    }
+  }
+  return evenNums;
+}
+
+var sequence = new Fibonacci(20);
+console.log(sequence.evenNumbersInSequence);
