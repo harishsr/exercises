@@ -4,17 +4,28 @@
 
 function Fibonacci( maxValue ) {
   this.maxValue = maxValue;
-  this.sequence = [1, 2, 3, 4, 5, 6, 7, 8];
+  this.sequence = [];
 
-  this.calculateSequence = function(){}
+  this.calculateSequence = fibonacciCalculation(this.sequence, this.maxValue);
   this.evenNumbersInSequence = evenNumbers(this.sequence);
+  this.sumOfEvenValues = addArray(this.evenNumbersInSequence);
 }
 
+function fibonacciCalculation(arrayIn, maxValue){
+  var newNum = 0;
+  while(newNum < maxValue) {
+    var num1 = (arrayIn[arrayIn.length - 1] || 0);
+    var num2 = (arrayIn[arrayIn.length - 2] || 1);
+    newNum = num1 + num2;
+    arrayIn.push(newNum);
+  }
+  return arrayIn;
+}
 
 function evenNumbers(arrayIn){
   var evenNums = [];
   if (arrayIn.length < 1){
-    return;
+    return evenNums;
   } else {
     for (i=0; i < arrayIn.length; i++){
       if (arrayIn[i] % 2 === 0){
@@ -25,5 +36,11 @@ function evenNumbers(arrayIn){
   return evenNums;
 }
 
-var sequence = new Fibonacci(20);
-console.log(sequence.evenNumbersInSequence);
+function addArray( arrayIn ){
+  return arrayIn.reduce(function(a, b){
+    return a += b;
+  });
+}
+
+var sequence = new Fibonacci(4000000);
+console.log(sequence.sumOfEvenValues);
