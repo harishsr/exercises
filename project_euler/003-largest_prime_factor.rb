@@ -6,7 +6,7 @@ require 'prime'
 class PrimeFactor < Prime
   def self.largest( num )
     factors = prime_division(num)
-    factors.flatten.sort[-1]
+    factors.flatten.sort.last
   end
 end
 
