@@ -43,4 +43,7 @@ function largestNum( arr ){
   return Math.max.apply(null, arr );
 }
 
-console.log(largestNum(primeFactors(600851475143)));
+var thisTimesNumber = 600851475143;
+var answer = largestNum(primeFactors(thisTimesNumber));
+
+console.log(answer);
